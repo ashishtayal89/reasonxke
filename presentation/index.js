@@ -80,7 +80,7 @@ export default class Presentation extends React.Component {
             A new language for javascript development
           </Text>
           <Image src={images.reasonLogoSmall} margin="30px 10px 0px 0px" />
-          <Image src={images.xebiaLogo} margin="30px 0px 75px -200px" border-radius="110px" width="100px"/>
+          <Image src={images.xebiaLogo} margin="35px 0px 100px -200px" border-radius="110px" width="80px"/>
         </Slide>
 
         <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
