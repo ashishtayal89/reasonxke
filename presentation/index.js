@@ -44,7 +44,8 @@ const images = {
   messenger: require("../assets/messenger.png"),
   question: require("../assets/question.jpg"),
   reasonLogo: require("../assets/reasonLogo.png"),
-  xebiaLogo: require("../assets/xebiaLogo.jpeg")
+  xebiaLogo: require("../assets/xebiaLogo.jpeg"),
+  developerCoffee: require("../assets/developerCoffee.jpg")
 };
 
 preloader(images);
@@ -76,6 +77,12 @@ export default class Presentation extends React.Component {
           <Heading size={1} fit caps lineHeight={1} textColor="textColor">
             Reason for reason
           </Heading>
+        </Slide>
+        
+        <Slide transition={["zoom"]} bgColor="primary">
+          <Heading size={1} fit lineHeight={1} textColor="textColor">
+            ReasonML
+          </Heading>
           <Text margin="10px 0 0" textColor="secondary" size={1} fit bold>
             A new language for javascript development
           </Text>
@@ -85,40 +92,7 @@ export default class Presentation extends React.Component {
 
         <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
           <Heading size={6} textColor="secondary">
-            Back story
-          </Heading>
-          <List textColor="textColor">
-            <Appear>
-              <ListItem>
-                Our goal is to create quality maintainable apps{" "}
-              </ListItem>
-            </Appear>
-            <Appear>
-              <ListItem> We wanted fewer errors </ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>We want it to be hard to introduce bugs</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>
-                Last year we started migrating our code towards Reason
-              </ListItem>
-            </Appear>
-          </List>
-        </Slide>
-
-        <Slide
-          transition={["fade"]}
-          bgColor="primary"
-          textColor="black"
-          notes="Well it's not exactly new. It's built on OCaml. OCaml is a language with an emphasis  on expressiveness and safety. 
-          It is the technology of choice in companies where a single mistake can cost millions and speed matters. 
-          80% of OCaml's semantics already maps over to modern JavaScript and vice-versa. 
-          The learning curve of Reason isn't really higher than learning JS + a gradual type system. 
-          The bsb compiler is blazingly fast and can finish incremental builds in less than 100ms. And because it is compiled our code can be optimized, dead code can be removed. The langauge is pure, immutable and functional, so it's basically everything we love"
-        >
-          <Heading size={6} textColor="secondary">
-            What is Reason?
+            What is ReasonML?
           </Heading>
           <BlockQuote>
             <Quote textSize="36px" textColor="textColor">
@@ -128,73 +102,154 @@ export default class Presentation extends React.Component {
           </BlockQuote>
           <List textColor="textColor">
             <Appear>
-              <ListItem>It's a new syntax on top of OCaml</ListItem>
+              <ListItem> A language which compiles to Javascript. </ListItem>
             </Appear>
             <Appear>
-              <ListItem>It looks and feels like ES6 JavaScript</ListItem>
+              <ListItem> Leverages javascript syntax along with OCaml semantics. </ListItem>
             </Appear>
+            <List textColor="textColor" style={{ paddingLeft: "50px" }}>
+              <Appear>
+                <ListItem>
+                  OCaml or Objective Caml was first introduced in 1996.
+                </ListItem>
+              </Appear>
+              <Appear>
+                <ListItem>
+                  It provides the type safety and type inference of a ML language.
+                </ListItem>
+              </Appear>
+            </List>
             <Appear>
-              <ListItem>It's type safe!!!</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>
-                It's a language which focuses on performance and size.
-              </ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>
-                Gives us dead code elimination and compile time optimizations.
-                Browser doesn't have to do that at runtime now.
-              </ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>
-                The language is pure, immutable and functional.
-              </ListItem>
+              <ListItem> It is compiled to javascript using the bs-platform/bucklescript compiler.</ListItem>
             </Appear>
           </List>
         </Slide>
 
-        <Slide
-          transition={["fade"]}
-          bgColor="primary"
-          textColor="tertiary"
-          notes="UI programming is a really hard problem to solve. In OCaml types have 100% coverage types can be infered (you don't have to write the manually. And the type system is sound ( once it compiles, the types are guaranteed to be accurate)."
-        >
+        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
+          <List textColor="textColor">
+            <Appear>
+              <ListItem>Features : </ListItem>
+            </Appear>
+            <List textColor="textColor" style={{ paddingLeft: "50px" }}>
+              <Appear>
+                <ListItem> Statically and strongly typed </ListItem>
+              </Appear>
+              <Appear>
+                <ListItem>
+                  Implicitly immutable
+                </ListItem>
+              </Appear>
+              <Appear>
+                <ListItem>
+                  Inclided towards or implicitly functional
+                </ListItem>
+              </Appear>
+            </List>
+          </List>
+        </Slide>
+
+        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
           <Heading size={6} textColor="secondary">
-            More on ReasonML
+            Issues faced in a Javascript application
           </Heading>
           <List textColor="textColor">
             <Appear>
-              <ListItem>The type system is sound!</ListItem>
+              <ListItem>
+                Difficult to infer type of a variable while development
+              </ListItem>
             </Appear>
-            <List textColor="textColor" style={{ paddingLeft: "50px" }}>
-              <Appear>
-                <ListItem>
-                  The types guarantee that they are what they are, not just 90%
-                  of the time!
-                </ListItem>
-              </Appear>
-            </List>
-
             <Appear>
-              <ListItem>Strong type inference</ListItem>
+              <ListItem> Type error's at runtime(Dynamic and Loosely Typed) </ListItem>
             </Appear>
-            <List textColor="textColor" style={{ paddingLeft: "50px" }}>
-              <Appear>
-                <ListItem>
-                  You don't have to tediously write all the types manually. Feel
-                  free to still type out some parts for readability
-                </ListItem>
-              </Appear>
-            </List>
-
             <Appear>
-              <ListItem>No Runtime errors</ListItem>
+              <ListItem> Trying to access properties of an undefined/null variable(Since null and undefined are also primitive types in JS)</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem> Limited Data Structures</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem> Variable scoping issues</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem> Context issues inside a function</ListItem>
+            </Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary">
+            Solutions provided by ReasonML
+          </Heading>
+          <List textColor="textColor">
+            <Appear>
+              <ListItem>
+                Statically and Strongly typed
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem> Doesn't support null or undefined but instead has variants to support that functinality </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem> Introduces new Data Structures like Linklist etc</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem> There is no var keyword but only let, so no issues with variable scoping</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem> Since it is inclided towards functional programing, so rarely any context issues.</ListItem>
+            </Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary">
+            Why OCaml?
+          </Heading>
+          <BlockQuote>
+            <Quote textSize="36px" textColor="textColor">
+              Why was OCaml choosen as the language to build ReasonML instead of any other language.
+            </Quote>
+          </BlockQuote>
+          <List textColor="textColor">
+            <Appear>
+              <ListItem> Reason for choosing OCaml is that 80% of the OCaml semantics map over to the modern JS. If one has the luxury of leaving out a few corners of JavaScript and add a few nice things, one can actually achieve something that compiles to pretty readable JS and directly use 80% of its ecosystem & tooling. </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem> OCaml defaults to or is implicitly immutable and functional. </ListItem>
+            </Appear>
+          </List>
+        </Slide>
+        
+        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
+          <List textColor="textColor">
+            <Appear>
+              <ListItem> The language for writing React. Reason's creator also created ReactJS, whose first prototypes were written in SML, a distant cousin of OCaml. They transcribed ReactML into ReactJS for wide adoption. A few years later, now they are iterating on the future of ReactJS through ReasonReact. </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem> The ability to render to native code. OCaml's native (assembly) startup time is in single digit milliseconds. There are plans to use Reason on native one day both at FE(WebAssembly) and BE. </ListItem>
+            </Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary">
+            What is BuckleScript?
+          </Heading>
+          <List textColor="textColor">
+            <Appear>
+              <ListItem>
+                It is compiler which was created to leverage ReasonML/OCaml as a language for FE and BE development by compiling it into javascript
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Helps writing javascript in ReasonML/OCaml.</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Module by module compilation. (ES6, commonJs,  AMD)</ListItem>
             </Appear>
             <Appear>
               <ListItem>
-                The result is a more safer and reliable codebase
+                Easy interops between ReasonML/OCaml and Js
               </ListItem>
             </Appear>
           </List>
@@ -267,86 +322,12 @@ export default class Presentation extends React.Component {
           code={require("raw-loader!../assets/code/functions.example")}
           ranges={[
             { loc: [0, 0], title: "Functions" },
-            { loc: [0, 5], note: "A simple function declaration" },
-            { loc: [6, 10], note: "The same function with labeled arguments" },
+            { loc: [0, 4], note: "A simple function declaration" },
+            { loc: [5, 7], note: "Implicit function currying" },
+            { loc: [8, 12], note: "The same function with labeled arguments" },
             {
-              loc: [11, 13],
+              loc: [13, 16],
               note: "Function will work the same regardless of parameter order"
-            }
-            // ...
-          ]}
-        />
-
-        <CodeSlide
-          transition={[]}
-          lang="reason"
-          code={require("raw-loader!../assets/code/options.example")}
-          ranges={[
-            { loc: [0, 0], title: "The option pattern" },
-            {
-              loc: [0, 10],
-              note: "We have a person type that maybe has a seat"
-            },
-            {
-              loc: [17, 22],
-              note: "When we want to use the data we need to be sure it's there"
-            },
-            {
-              loc: [23, 25],
-              note:
-                "We can also extract a value and more from optionals through the Belt utility library"
-            },
-            {
-              loc: [23, 23],
-              note:
-                "So the option type gives us the opportunity to handle null values properly"
-            }
-            // ...
-          ]}
-        />
-
-        <CodeSlide
-          transition={[]}
-          lang="reason"
-          code={require("raw-loader!../assets/code/variants.example")}
-          ranges={[
-            { loc: [0, 0], title: "Variants" },
-            { loc: [0, 4], note: "We have Variants" },
-            { loc: [5, 6], note: "and a BS Polymorphic Variant " },
-            {
-              loc: [6, 6],
-              note:
-                "Main difference is that Variant compiles to number but poly. compiles to string"
-            },
-            {
-              loc: [7, 11],
-              note: "We can also add constructor arguments to our Variants"
-            }
-            // ...
-          ]}
-        />
-
-        <CodeSlide
-          transition={[]}
-          lang="reason"
-          code={require("raw-loader!../assets/code/pattern-matching.example")}
-          ranges={[
-            { loc: [0, 0], title: "Pattern matching" },
-
-            {
-              loc: [5, 20],
-              note:
-                "Use pattern matching on variants to get an appropriate string for the type"
-            },
-            {
-              loc: [0, 4],
-              note:
-                "We are extracting through pattern matching the value stored by the Variant"
-            },
-            {
-              loc: [8, 12],
-              note:
-                "Each case in the pattern matching will correspond to a desired Variant value"
             }
             // ...
           ]}
@@ -400,6 +381,81 @@ export default class Presentation extends React.Component {
               note: "can be 'chained' or piped in Reason like this"
             }
 
+            // ...
+          ]}
+        />
+
+        <CodeSlide
+          transition={[]}
+          lang="reason"
+          code={require("raw-loader!../assets/code/variants.example")}
+          ranges={[
+            { loc: [0, 0], title: "Variants" },
+            { loc: [0, 4], note: "We have Variants" },
+            { loc: [5, 6], note: "and a BS Polymorphic Variant " },
+            {
+              loc: [6, 6],
+              note:
+                "Main difference is that Variant compiles to number but poly. compiles to string"
+            },
+            {
+              loc: [7, 11],
+              note: "We can also add constructor arguments to our Variants"
+            }
+            // ...
+          ]}
+        />
+
+        <CodeSlide
+          transition={[]}
+          lang="reason"
+          code={require("raw-loader!../assets/code/options.example")}
+          ranges={[
+            { loc: [0, 0], title: "The option pattern" },
+            {
+              loc: [0, 4],
+              note: "type declaration"
+            },
+            {
+              loc: [5, 12],
+              note: "When we want to use the data we need to be sure it's there"
+            },
+            {
+              loc: [12, 15],
+              note:
+                "We can also extract a value and more from optionals through the Belt utility library"
+            },
+            {
+              loc: [16, 16],
+              note:
+                "So the option type gives us the opportunity to handle null values properly"
+            }
+            // ...
+          ]}
+        />
+
+        <CodeSlide
+          transition={[]}
+          lang="reason"
+          code={require("raw-loader!../assets/code/pattern-matching.example")}
+          ranges={[
+            { loc: [0, 0], title: "Pattern matching" },
+
+            {
+              loc: [5, 20],
+              note:
+                "Use pattern matching on variants to get an appropriate string for the type"
+            },
+            {
+              loc: [0, 4],
+              note:
+                "We are extracting through pattern matching the value stored by the Variant"
+            },
+            {
+              loc: [8, 12],
+              note:
+                "Each case in the pattern matching will correspond to a desired Variant value"
+            }
             // ...
           ]}
         />
@@ -539,10 +595,10 @@ export default class Presentation extends React.Component {
         />
 
         <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
-          <Heading size={3} textColor="secondary">
-            Any questions?
+          <Heading size={5} textColor="secondary">
+            CODE = DEVELOPER + COFFEE
           </Heading>
-          <Image src={images.question} />
+          <Image src={images.developerCoffee} />
         </Slide>
       </Deck>
     );

@@ -1,8 +1,10 @@
-let getName: string = (pax) => {
-  let firstName = pax.firstName;
-  let lastName = pax.lastName;
+let getName: string = (firstName, lastName) => 
+{
   firstName ++ " " ++ lastName
 };
+
+getName("Jane","Doe");
+getName("Jane")("Doe");
 
 let getName = (~firstName, ~lastName) => 
 {

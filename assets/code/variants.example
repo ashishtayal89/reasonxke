@@ -3,7 +3,7 @@ type passenger =
   | Child
   | Infant
 
-type passenger = [ `Adult  | `Child  | `Infant ]
+type passenger = [`Adult  | `Child  | `Infant]
 
 type passenger =
   | Adult(int)
